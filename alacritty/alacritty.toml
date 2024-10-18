@@ -1,0 +1,26 @@
+# Adaptation of colors from WezTerm to Alacritty in TOML format
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 12
+italic = { style = "Regular" }
+bold_italic = { style = "Bold" }
+
+[font.normal]
+family = "JetBrains Mono"
+
+[window]
+option_as_alt = "Both"
+opacity = 0.96
+
+[env]
+TERM = "xterm-256color"
+
+# Uncomment for Windows
+#[shell]
+#program = "wsl.exe"
+#args = ["--cd","~"]
+
