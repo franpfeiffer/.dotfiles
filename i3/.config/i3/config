@@ -17,11 +17,14 @@ font pango:JetBrains Mono 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-# font pango:DejaVu Sans Mono 5
+# font pango:JetBrains Mono 5
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id feh --bg-scale /home/fran/dotfiles/backgrounds/nice-blue-background.png
+exec --no-startup-id picom
+exec --no-startup-id xinput set-prop "12" "libinput Accel Profile Enabled" 0 1 0
+exec --no-startup-id "setxkbmap -layout us,latam -option 'grp:alt_space_toggle'"
+exec --no-startup-id feh --bg-fill /home/fran/wallpapers-uwu/amordemividafakiu.HEIC
 exec --no-startup-id dex --autostart --environment i3
 
 client.focused          #111111 #111111 #ffffff #111111
@@ -47,9 +50,19 @@ bindsym $mod+o exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% &&
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# # Sreen brightness controls
+# # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/fran/Pictures/$(date).png"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/fran/Pictures/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/fran/Pictures/$(date).png"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -59,8 +72,8 @@ floating_modifier $mod
 # tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
-                        #kitty
+bindsym $mod+Return exec alacritty
+                       # kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -72,16 +85,6 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-# Screenshots
-bindsym Print exec --no-startup-id maim "/home/fran/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/fran/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/fran/Pictures/$(date)"
-
-## Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # change focus
 bindsym $mod+j focus left
@@ -209,5 +212,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
-        font pango:JetBrains Mono 6
+        font pango:JetBrains Mono 7
 }
+
