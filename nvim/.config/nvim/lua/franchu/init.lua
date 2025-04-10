@@ -1,4 +1,4 @@
-require("franchu.lazy")
+require("franchu.packer")
 require("franchu.remap")
 require("franchu.set")
 

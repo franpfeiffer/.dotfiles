@@ -20,7 +20,13 @@ alias vim=nvim
 alias c=clear
 alias logout='loginctl terminate-user fran'
 alias t=tmux
-alias tkserver='tmux kill-server'
+alias tks='tmux kill-server'
+alias ga='git add'
+alias gs='git status'
+alias gc='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+alias gco='git checkout'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

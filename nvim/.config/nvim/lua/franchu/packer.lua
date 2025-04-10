@@ -1,7 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
---[[
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
@@ -21,6 +18,7 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
+  use "rebelot/kanagawa.nvim"
 
   use({
       "folke/trouble.nvim",
@@ -33,6 +31,7 @@ return require('packer').startup(function(use)
           }
       end
   })
+
 
 
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
@@ -48,7 +47,7 @@ return require('packer').startup(function(use)
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
+	  branch = 'v4.x',
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},
@@ -68,5 +67,17 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+
+  use {
+      'franpfeiffer/term2.nvim',
+      config = function()
+          require('term2').setup({
+              height = 15,
+              keymap = '<leader>t'
+          })
+      end
+  }
+
 end)
---]]
+
+
